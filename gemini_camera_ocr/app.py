@@ -9,11 +9,6 @@ from .settings import Settings
 logger = logging.getLogger(__name__)
 
 
-def output_debug_frame(frame: bytes) -> None:
-    with open("debug.jpg", "wb") as f:
-        f.write(frame)
-
-
 async def run_loop() -> None:
     settings = Settings()
 
@@ -37,8 +32,6 @@ async def run_loop() -> None:
         while True:
             try:
                 frame = await camera.read_frame(jpeg_quality=settings.jpeg_quality)
-                gemini_response = await gemini.ocr_image(frame)
-                await asyncio.to_thread(output_debug_frame, frame)
                 gemini_response = await gemini.ocr_image(frame)
                 logger.info(
                     "\n".join(
