@@ -8,14 +8,13 @@ version = "0.1.0"
 description = "OCR from virtual camera every N seconds using Gemini API"
 requires-python = ">=3.10"
 dependencies = [
-  "opencv-python>=4.8",
-  "pydantic>=2.7",
-  "pydantic-settings>=2.3",
-  "google-genai>=0.3.0",
+  "opencv-python>=4.12.0.88",
+  "pydantic>=2.12.5",
+  "pydantic-settings>=2.12.0",
+  "google-genai>=1.56.0",
+  "tqdm>=4.67.1"
 ]
 
-[tool.setuptools]
-package-dir = {"" = "src"}
-
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
+include = ["gemini_camera_ocr*"]
